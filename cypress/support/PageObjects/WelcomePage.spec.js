@@ -6,6 +6,11 @@ export class WelcomePage {
         cy.visit(this.url)
     }
 
+    pageBody()
+    {
+        return cy.get('#www-wikipedia-org')
+    }
+
     searchBox()
     {
         return cy.get('#searchInput')
