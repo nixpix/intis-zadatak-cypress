@@ -1,0 +1,27 @@
+{
+  "name": "intis-zadaci",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress-open": "cypress open",
+    "test": "cypress run --browser chrome",
+    "test-headless": "cypress run --browser chrome --headless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixpix/intis-zadaci.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nixpix/intis-zadaci/issues"
+  },
+  "homepage": "https://github.com/nixpix/intis-zadaci#readme",
+  "devDependencies": {
+    "cypress": "^8.7.0"
+  },
+  "dependencies": {
+    "cypress-wait-until": "^1.7.1"
+  }
+}
