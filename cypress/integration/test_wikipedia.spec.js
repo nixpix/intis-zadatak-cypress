@@ -3,7 +3,6 @@
 import { WelcomePage } from "../support/PageObjects/WelcomePage.spec";
 import { ArticlePage } from "../support/PageObjects/ArticlePage.spec";
 import { ViewHistoryPage } from "../support/PageObjects/ViewHistoryPage.spec";
-import 'cypress-wait-until';
 
 let welcomePage = new WelcomePage();
 let articlePage = new ArticlePage();
@@ -18,27 +17,46 @@ describe("Wikipeda - Hrvatski", () => {
         
         welcomePage.typeSearchBox('Juraj Dobrila')
         welcomePage.clickSearchButton()
+        articlePage.articleBody().should('contain.text', 'Juraj (Giorgio) Dobrila').should('contain.text', 'Biography')
         
         cy.screenshot('ArticlePage')
     })
 
     it("selecting article language should work correctly", () => {
         articlePage.selectLanguage('Hrvatski')
+        articlePage.articleBody().should('contain.text', 'Životopis')
+        articlePage.articleBody().should('contain.text', 'Vidi povijest')
+
         cy.screenshot('ArticlePageHrvatski ')
     })
 
     it("searching the edit history should work correctly", () => {
         articlePage.clickViewHistoryTab()
+
         cy.screenshot('ViewHistoryPage')
+        
+        // click doesn't react because element is not clickable after page load, 
+        // since no API call is made it was not possible to implement dynamic waiting
         cy.wait(500)
 
         viewHistoryPage.clickFilterRevisionsToogle()
         viewHistoryPage.clickDateFilterField()
         viewHistoryPage.typeDateFilterInputField('2020-07-01')
         viewHistoryPage.clickShowRevisionsButton()
+
+        viewHistoryPage.viewHistoryBody().should('contain.text','Povijest izmjena stranice »Juraj Dobrila«')
+        viewHistoryPage.viewHistoryBody().should('contain.text','Usporedi izabrane inačice')
+
+        cy.screenshot('ViewHistoryPageAfterFiltering')
+    })
+
+    it("check first edit history for article", () => {
+        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '22:33, 24. travnja 2020.‎')
     })
 
     it("searching edit history should consider daylight savings change", () => {
-    
+        cy.clock(Date.UTC(2021, 11, 1), ['Date']);
+        cy.reload(true)
+        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '22:33, 24. travnja 2020.‎')
     })
 })

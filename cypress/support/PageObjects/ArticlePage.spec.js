@@ -1,4 +1,9 @@
 export class ArticlePage {
+    articleBody()
+    {
+        return cy.get('body')
+    }
+
     viewHistoryTab()
     {
         return cy.get('#ca-history > a > span')

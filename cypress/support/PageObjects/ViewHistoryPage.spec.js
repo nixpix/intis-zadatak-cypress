@@ -1,4 +1,9 @@
 export class ViewHistoryPage {
+    viewHistoryBody()
+    {
+        return cy.get('body')
+    }
+
     filterRevisionsToogle()
     {
         return cy.get('.oo-ui-icon-expand')
@@ -22,6 +27,11 @@ export class ViewHistoryPage {
     filterRevisionsCollapsible()
     {
         return cy.get('.oo-ui-fieldsetLayout-group')
+    }
+
+    historyEntriesList()
+    {
+        return cy.get('#pagehistory > li') 
     }
 
     clickFilterRevisionsToogle()
