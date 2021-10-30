@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cypress-open": "cypress open",
-    "test": "cypress run --browser chrome",
-    "test-headless": "cypress run --browser chrome --headless"
+    "test": "cypress run --browser chrome --headed --reporter mochawesome",
+    "test-headless": "cypress run --browser chrome --headless --reporter mochawesome"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
     "cypress": "^8.7.0"
   },
   "dependencies": {
-    "cypress-wait-until": "^1.7.1"
-  }
+    "cypress-wait-until": "^1.7.1",
+    "mochawesome": "^6.3.1"
+  },
+  "reporter": "mochawesome"
 }
