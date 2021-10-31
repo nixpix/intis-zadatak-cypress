@@ -12,8 +12,10 @@ Nakon instalacije, moguće je pokrenuti test na nekoliko načina:
 Reporti će biti generirani i spremljeni u folder: `\intis-zadatak-cypress\mochawesome-report` u obliku HTML-a.
 
 **Naomena: unutar repozitorija postoji i video uputa i demonstracija izvršavanja testa**
-https://github.com/nixpix/intis-zadatak-cypress/raw/main/01%20-%20Setup%20and%20run%20headed%20mode.mp4
-https://github.com/nixpix/intis-zadatak-cypress/raw/main/02%20-%20Run%20headless%20mode.mp4
+
+[Video 1](https://github.com/nixpix/intis-zadatak-cypress/raw/main/01%20-%20Setup%20and%20run%20headed%20mode.mp4)
+
+[Video 2](https://github.com/nixpix/intis-zadatak-cypress/raw/main/02%20-%20Run%20headless%20mode.mp4)
 
 ## Info o repozitoriju.
 Test je implementiran koristeći Page Object Model pattern. 
