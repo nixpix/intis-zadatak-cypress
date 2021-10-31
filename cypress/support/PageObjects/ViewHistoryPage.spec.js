@@ -6,7 +6,7 @@ export class ViewHistoryPage {
 
     filterRevisionsToogle()
     {
-        return cy.get('.oo-ui-icon-expand')
+        return cy.get('#mw-history-search > legend')
     }
 
     dateFilterField()

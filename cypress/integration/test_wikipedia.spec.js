@@ -37,7 +37,7 @@ describe("Wikipeda - Hrvatski", () => {
         
         // click doesn't react because element is not clickable after page load, 
         // since no API call is made it was not possible to implement dynamic waiting
-        cy.wait(500)
+        // cy.wait(500)
 
         viewHistoryPage.clickFilterRevisionsToogle()
         viewHistoryPage.clickDateFilterField()
@@ -51,12 +51,12 @@ describe("Wikipeda - Hrvatski", () => {
     })
 
     it("check first edit history for article", () => {
-        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '22:33, 24. travnja 2020.‎')
+        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '21:33, 24. travnja 2020.‎')
     })
 
     it("searching edit history should consider daylight savings change", () => {
         cy.clock(Date.UTC(2021, 11, 1), ['Date']);
         cy.reload(true)
-        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '22:33, 24. travnja 2020.‎')
+        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '21:33, 24. travnja 2020.‎')
     })
 })
