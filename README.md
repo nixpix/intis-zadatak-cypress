@@ -1,5 +1,3 @@
-# intis-zadaci
-
 # Zadatak 1
 Zadatak je implementiran koristeći Cypress.io framework.
 Da bi se test pokrenuo potrebno je imati instaliran `node.js` koji se može preuzeti na linku: https://nodejs.org/en/
@@ -16,6 +14,15 @@ Reporti će biti generirani i spremljeni u folder: `\intis-zadatak-cypress\mocha
 **Naomena: unutar repozitorija postoji i video uputa i demonstracija izvršavanja testa**
 https://github.com/nixpix/intis-zadatak-cypress/raw/main/01%20-%20Setup%20and%20run%20headed%20mode.mp4
 https://github.com/nixpix/intis-zadatak-cypress/raw/main/02%20-%20Run%20headless%20mode.mp4
+
+## Info o repozitoriju.
+Test je implementiran koristeći Page Object Model pattern. 
+Tako da su svi selektoru/lokatori spremljeni u zasebne klase koje se onda pozivaju u testu. Na taj način se omogućuje maksimalni reusability tih funkcija i olakšava održavanje, jer je kod promjene selektora to isto potrebno promijeniti samo na jednom mjestu.
+
+POM klase se nalaze na putanji: `intis-zadatak-cypress\cypress\support\PageObjects`
+Sami test se nalazi u folderu: `intis-zadatak-cypress\cypress\integration`
+
+
 # Zadatak 2
 
 Postoji više odgovora na pitanje.
