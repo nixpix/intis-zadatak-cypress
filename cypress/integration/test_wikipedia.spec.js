@@ -11,21 +11,27 @@ let viewHistoryPage = new ViewHistoryPage();
 describe("Wikipeda - Hrvatski", () => {
     it("search should work correctly", () => {
         welcomePage.visit()
-        welcomePage.pageBody().should('contain.text', 'Wikipedia').should('contain.text', 'The Free Encyclopedia')
+        welcomePage.pageBody()
+            .should('contain.text', 'Wikipedia')
+            .should('contain.text', 'The Free Encyclopedia')
         
         cy.screenshot('WelcomePage')
         
         welcomePage.typeSearchBox('Juraj Dobrila')
         welcomePage.clickSearchButton()
-        articlePage.articleBody().should('contain.text', 'Juraj (Giorgio) Dobrila').should('contain.text', 'Biography')
+        articlePage.articleBody()
+            .should('contain.text', 'Juraj (Giorgio) Dobrila')
+            .should('contain.text', 'Biography')
         
         cy.screenshot('ArticlePage')
     })
 
     it("selecting article language should work correctly", () => {
         articlePage.selectLanguage('Hrvatski')
-        articlePage.articleBody().should('contain.text', 'Životopis')
-        articlePage.articleBody().should('contain.text', 'Vidi povijest')
+        articlePage.articleBody()
+            .should('contain.text', 'Životopis')
+        articlePage.articleBody()
+            .should('contain.text', 'Vidi povijest')
 
         cy.screenshot('ArticlePageHrvatski ')
     })
@@ -51,12 +57,6 @@ describe("Wikipeda - Hrvatski", () => {
     })
 
     it("check first edit history for article", () => {
-        viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '21:33, 24. travnja 2020.‎')
-    })
-
-    it("searching edit history should consider daylight savings change", () => {
-        cy.clock(Date.UTC(2021, 11, 1), ['Date']);
-        cy.reload(true)
         viewHistoryPage.historyEntriesList().eq(0).should('contain.text', '21:33, 24. travnja 2020.‎')
     })
 })

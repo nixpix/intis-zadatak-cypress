@@ -1,33 +1,42 @@
 export class WelcomePage {
-    url = 'https://www.wikipedia.org/'
+  url = "https://www.wikipedia.org/";
 
-    visit()
-    {
-        cy.visit(this.url)
-    }
+  visit() {
+    cy.visit(this.url, {
+      onBeforeLoad(win) {
+        Object.defineProperty(win.navigator, "language", { value: "en-GB" });
+        Object.defineProperty(win.navigator, "languages", { value: ["en"] });
+        Object.defineProperty(win.navigator, "accept_languages", {
+          value: ["en"],
+        });
+      },
+      headers: {
+        "Accept-Language": "de",
+      },
+    });
+  }
 
-    pageBody()
-    {
-        return cy.get('#www-wikipedia-org')
-    }
+  pageBody() {
+    return cy.get("#www-wikipedia-org");
+  }
 
-    searchBox()
-    {
-        return cy.get('#searchInput')
-    }
+  pageHeader() {
+    return cy.get("#www-wikipedia-org > div.central-textlogo");
+  }
 
-    searchButton()
-    {
-        return cy.get('#search-form > fieldset > button')
-    }
+  searchBox() {
+    return cy.get("#searchInput");
+  }
 
-    typeSearchBox(searchTerm)
-    {
-        return this.searchBox().type(searchTerm)
-    }
+  searchButton() {
+    return cy.get("#search-form > fieldset > button");
+  }
 
-    clickSearchButton()
-    {
-        return this.searchButton().click()
-    }
+  typeSearchBox(searchTerm) {
+    return this.searchBox().type(searchTerm);
+  }
+
+  clickSearchButton() {
+    return this.searchButton().click();
+  }
 }
